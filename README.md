@@ -3,7 +3,7 @@
 
 This repository contains the documentation for IceCI project. Documentation is build using the Sphinx project.
 
-The online version of this documentation can be found [here](https://iceci.readthedocs.org)
+The online version of this documentation can be found [here](https://docs.iceci.io/)
 
 ## Installation and build
 
