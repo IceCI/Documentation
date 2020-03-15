@@ -1,0 +1,12 @@
+version: 2
+formats:
+- html
+
+python:
+   version: 3.7
+   install:
+   - requirements: requirements.txt
+
+sphinx:
+  builder: html
+  configuration: source/conf.py
