@@ -84,6 +84,28 @@ Here's an example of passing environment variables to a container.
 
   As you can see, the environment variable value is hardcoded into the pipeline. This is fine if your build configuration doesn't contain passwords or other sensitive data. For more information on how to manage sensitive data in ``IceCI`` see :ref:`secrets section<secrets-desc>`.
 
+Files
+_____
+
+Here's an example of mounting files from a secret in a container.
+
+.. code-block:: yaml
+
+  steps:
+  - name: file-test
+    dockerRun:
+      image: busybox
+      script: "cat /mnt/file"
+      files:
+      - path: /mnt/file
+        fromSecret: file-secret
+
+.. note::
+
+  The content of a file can't be defined inline. Every file has to have a reference to a secret, from which the content is pulled.
+
+
+
 Further reading
 +++++++++++++++
 

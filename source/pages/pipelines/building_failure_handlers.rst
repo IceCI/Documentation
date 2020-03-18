@@ -81,3 +81,31 @@ Below is an example of running a :attr:`failure handlers<FailureHandler>` from b
 .. note::
   Notice that ``failure-handler-1`` will run twice because it's declared in both the global section and in the step. Currently IceCI does not implement any deduplication mechanism for failure handlers.
 
+
+Environment variables and files
+_______________________________
+
+Here's an example of defining environment variables and files on :attr:`failure handler<FailureHandler>` level.
+
+.. code-block:: yaml
+
+  steps:
+  - name: step-that-fails
+    dockerRun:
+      image: busybox
+      script: "noSuchCommand"
+    onFailure:
+    - handlerName: failure-handler-1
+
+  failureHandlers:
+  - name: failure-handler-1
+    image: busybox
+    script: |
+      echo $ICE_FH
+      cat /mnt/file
+    environment:
+    - name: ICE_FH
+      value: failure-handler-env
+    files:
+    - path: /mnt/file
+      fromSecret: failure-secret

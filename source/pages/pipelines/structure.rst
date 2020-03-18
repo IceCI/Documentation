@@ -67,7 +67,15 @@ The root of pipeline yaml file consists of the following fields.
     Those environment variables will be passed to every :attr:`Docker run step<DockerRun>` in the pipeline.
 
     .. important::
-      ``Failure handlers`` have access to all the environment variables of a given ``step`` injected into their spec, so they're available in the failure handler as well. For more information about passing environment variables to failure handlers see TODO
+      ``Failure handlers`` have access to all the environment variables of a given ``step`` injected into their spec, so they're available in the failure handler as well.
+
+  .. py:attribute:: files
+    :type: list(File)
+
+    List of files that will be mounted in every :attr:`Docker run step<DockerRun>` in the pipeline.
+
+    .. important::
+      Like environment variables, files from a given ``step`` are also mounted into ``Failure handlers``.
 
 
 
@@ -142,6 +150,11 @@ Definitions of all objects and types used in the pipeline definition.
     :type: list(EnvironmentVariable)
 
     List of environment variables passed to the container.
+
+  .. py:data:: files
+    :type: list(File)
+
+    List of files that will be mounted in the container.
 
 
 
@@ -261,6 +274,11 @@ Definitions of all objects and types used in the pipeline definition.
 
     List of environment variables passed to the container.
 
+  .. py:data:: files
+    :type: list(File)
+
+    List of files that will be mounted in the container.
+
 
 .. _failure-handler-reference-reference:
 
@@ -296,3 +314,20 @@ Definitions of all objects and types used in the pipeline definition.
 
   .. note::
     Currently ``IceCI`` supports creating environment variables by explicitly entering their values in the pipeline yaml or by providing a secret name from which the value should be taken. Those options are exclusive for a given variable - you can't have both :attr:`value` and :attr:`fromSecret` set at the same time - the pipeline validation will fail.
+
+
+
+.. _file-reference:
+
+.. py:attribute:: File
+  :type: Object
+
+  The file object represents a file that'll be mounted in a container from a secret. Unlike environment variables, file values cannot be provided inline - they have to reference a secret.
+
+  .. py:attribute:: path
+
+    The absolute path that the file will be mounted in.
+
+  .. py:attribute:: fromSecret
+
+    Name of a secret from which the value should be retrieved to mount into the container as a file.
