@@ -62,7 +62,7 @@ Now you can access the UI through your browser and add a repository to start run
 
 .. image:: ../_static/quickstart/repo_add.png
 
-For the purposes of this guide, we'll fork the `quickstart example repository <https://github.com/dandruszak/example-quickstart>`_. After forking this repository, all you need to do is copy the clone url and paste it into the `Repository URL` field in the form.
+For the purposes of this guide, we'll fork the `quickstart example repository <https://github.com/IceCI/example-quickstart>`_. After forking this repository, all you need to do is copy the clone url and paste it into the `Repository URL` field in the form.
 
 .. note::
 	The example repository is also a template, so instead of forking you can use it to create a new one!
