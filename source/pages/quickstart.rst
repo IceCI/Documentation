@@ -16,6 +16,8 @@ Before installing IceCI you'll need to have access to a Kubernetes cluster. If y
 .. note::
 	When using Minikube you will need to enable the ingress addon to be able to reach the UI. It can be enabled with ``minikube addons enable ingress``. For more information please refer to the `documentation <https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/>`_.
 
+.. note::
+	You can install K3s on a Raspberry Pi - we have a dedicated version of IceCI for ARM as well (currently tested on a Raspberry Pi 4)
 
 
 Installing and running IceCI
@@ -46,6 +48,13 @@ You can use a handy all-in-one manifest to install IceCI. Applying it in your cl
 	kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/all_in_one.yaml
 
 Once all the applications are running, you're all ready to go.
+
+If you're installing IceCI in a cluster on a Raspberry Pi, use this dedicated manifest instead.
+
+.. code-block:: bash
+
+	kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/all_in_one-arm.yaml
+
 
 .. note::
 	Apart from the all-in-one file, all the manifests can be found as separate files in the IceCI `GitHub repository <https://github.com/IceCI/IceCI>`_
