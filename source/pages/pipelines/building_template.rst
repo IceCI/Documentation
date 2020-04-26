@@ -10,7 +10,7 @@ Interpolation syntax was introduced in ``IceCI`` to allow pipelines to use the p
 
 Currently the fields supporting interpolations are:
 
-  - :attr:`DockerBuild<DockerBuild>`:
+  - :attr:`ContainerBuild<ContainerBuild>`:
 
     - ``tags``
 
@@ -23,7 +23,7 @@ Here's an example of using interpolation to create a Docker tag containing the n
 
   steps:
   - name: pipeline-context
-    dockerBuild:
+    containerBuild:
       dockerSecret: dockerhub
       user: iceci
       imageName: my-app
