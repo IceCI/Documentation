@@ -17,11 +17,12 @@ There are a couple of key elements in IceCI pipelines. Some of them may be famil
   building_globals.rst
 
 
-
-Additional objects
+Additional options
 ------------------
 
 .. toctree::
   :maxdepth: 4
 
   building_secrets.rst
+  building_template.rst
+

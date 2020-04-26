@@ -179,12 +179,12 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:data:: imageName
     :type: string
 
-    Name of the image that will be built. This name is not the full image name, but only the name of a given image without a :data:`tag`, :data:`user` and :data:`registry`.
+    Name of the image that will be built. This name is not the full image name, but only the name of a given image without a :data:`tag<tags>`, :data:`user` and :data:`registry`.
 
-  .. py:data:: tag
-    :type: string
+  .. py:data:: tags
+    :type: list(string)
 
-    Tag of a Docker image that will be build.
+    Tags of a Docker image that will be build.
 
   .. py:data:: contextPath
     :type: string

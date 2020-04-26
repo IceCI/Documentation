@@ -58,7 +58,7 @@ Environment variables specified here are injected into every :attr:`step<Step>` 
 
 .. envvar:: ICE_GIT_TAG
 
-  *Not supported in current version*. Git tag name. This environment value is set only if ``ICE_GIT_EVENT_TYPE`` is set to ``tag``.
+  Git tag name. This environment value is set only if ``ICE_GIT_EVENT_TYPE`` is set to ``tag``.
 
   Example value: ``0.1.0``
 
