@@ -6,11 +6,11 @@ Failure handlers
 Overview
 ++++++++
 
-Failure handlers are very similar to :py:attr:`docker run<DockerRun>` :py:attr:`steps<Step>`. They will execute a set of commands in a *container*. The main difference is that they are used to execute code after a pipeline step fails. This allows you to add cleanup and notification actions to the pipeline.
+Failure handlers are very similar to :py:attr:`container run<ContainerRun>` :py:attr:`steps<Step>`. They will execute a set of commands in a *container*. The main difference is that they are used to execute code after a pipeline step fails. This allows you to add cleanup and notification actions to the pipeline.
 
 Failure handlers are defined globally, and can be referenced on both global pipeline level and on :py:attr:`step<Step>` level. Thanks to that, you can create a global error notification, but also add certain cleanup logic to specific steps.
 
-Failure handlers are executed in order of appearance of the ``onFailure`` section of the pipeline. Failure handlers for :py:attr:`steps<Step>` are executed first, followed by  failure handlers defined in the :py:attr:`global<globals>` section.
+Failure handlers are executed in order of appearance of the ``onFailure`` section of the pipeline. Failure handlers for :py:attr:`steps<Step>` are executed first, followed by failure handlers defined in the :py:attr:`global<globals>` section.
 
 .. important::
   When multiple failure handlers are specified, and one of them fails, the other ones will continue to execute. The pipeline tries to run every failure handler ignoring statuses of the previous ones.
@@ -32,7 +32,7 @@ Below is an example of running a failure handler after a failed :attr:`step<Step
 
   steps:
   - name: step-that-fails
-    dockerRun:
+    containerRun:
       image: busybox
       script: "noSuchCommand"
     onFailure:
@@ -53,7 +53,7 @@ Below is an example of running a :attr:`failure handlers<FailureHandler>` from b
 
   steps:
   - name: step-that-fails
-    dockerRun:
+    containerRun:
       image: busybox
       script: "noSuchCommand"
     onFailure:
@@ -91,7 +91,7 @@ Here's an example of defining environment variables and files on :attr:`failure 
 
   steps:
   - name: step-that-fails
-    dockerRun:
+    containerRun:
       image: busybox
       script: "noSuchCommand"
     onFailure:

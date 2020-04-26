@@ -26,18 +26,18 @@ Examples
 Simple steps
 ____________
 
-Here's an example of a working pipeline having 2 simple :attr:`docker run<DockerRun>` :attr:`steps<Step>`.
+Here's an example of a working pipeline having 2 simple :attr:`container run<ContainerRun>` :attr:`steps<Step>`.
 
 .. code-block:: yaml
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: busybox
       script: "echo 'Hello world!'"
 
   - name: step2
-    dockerRun:
+    containerRun:
       image: busybox
       script: |
         echo "step 2"
@@ -54,12 +54,12 @@ An example of generating a file and then accessing it in next :attr:`step<Step>`
 
   steps:
   - name: generate-date
-    dockerRun:
+    containerRun:
       image: busybox
       script: "date > date.log"
 
   - name: print-date
-    dockerRun:
+    containerRun:
       image: busybox
       script: "cat date.log"
 
@@ -73,7 +73,7 @@ Here's an example of passing environment variables to a container.
 
   steps:
   - name: env-test
-    dockerRun:
+    containerRun:
       image: busybox
       script: "printenv ENV_VAR_1"
       environment:
@@ -93,7 +93,7 @@ Here's an example of mounting files from a secret in a container.
 
   steps:
   - name: file-test
-    dockerRun:
+    containerRun:
       image: busybox
       script: "cat /mnt/file"
       files:

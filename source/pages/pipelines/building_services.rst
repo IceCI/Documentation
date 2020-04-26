@@ -34,7 +34,7 @@ Below is an example of a working pipeline running a **website** :py:attr:`servic
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: iceci/utils
       script: "curl http://website/"
 

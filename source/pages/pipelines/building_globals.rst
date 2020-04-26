@@ -31,12 +31,12 @@ Below is an example of setting up a :attr:`global<globals>` environment variable
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: busybox
       script: "printenv GLOBAL_ENV"
 
   - name: step2
-    dockerRun:
+    containerRun:
       image: busybox
       script: "printenv GLOBAL_ENV"
       environment:
@@ -57,12 +57,12 @@ Here's an example of setting up a :attr:`global<globals>` file and overriding it
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: busybox
       script: "cat /mnt/file"
 
   - name: step2
-    dockerRun:
+    containerRun:
       image: busybox
       script: "cat /mnt/file"
       files:

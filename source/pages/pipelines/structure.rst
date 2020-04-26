@@ -48,8 +48,8 @@ The root of pipeline yaml file consists of the following fields.
 
     This value will be passed to the following objects:
 
-    * :attr:`docker run step<DockerRun>`
-    * :attr:`docker build step<DockerBuild>`
+    * :attr:`container run step<ContainerRun>`
+    * :attr:`container build step<ContainerBuild>`
     * :attr:`failure handler<FailureHandler>`
     * :attr:`service<Service>`
 
@@ -64,7 +64,7 @@ The root of pipeline yaml file consists of the following fields.
 
     List of :attr:`environment variables<EnvironmentVariable>`.
 
-    Those environment variables will be passed to every :attr:`Docker run step<DockerRun>` in the pipeline.
+    Those environment variables will be passed to every :attr:`Container run step<ContainerRun>` in the pipeline.
 
     .. important::
       ``Failure handlers`` have access to all the environment variables of a given ``step`` injected into their spec, so they're available in the failure handler as well.
@@ -72,7 +72,7 @@ The root of pipeline yaml file consists of the following fields.
   .. py:attribute:: files
     :type: list(File)
 
-    List of files that will be mounted in every :attr:`Docker run step<DockerRun>` in the pipeline.
+    List of files that will be mounted in every :attr:`Container run step<ContainerRun>` in the pipeline.
 
     .. important::
       Like environment variables, files from a given ``step`` are also mounted into ``Failure handlers``.
@@ -104,31 +104,31 @@ Definitions of all objects and types used in the pipeline definition.
 
     List of :attr:`FailureHandlerReference` objects. All of failure handlers will be executed in the order declared in this list. If global failure handlers are also defined, they will be run after those specified here.
 
-  .. py:attribute:: dockerRun
-    :type: DockerRun
+  .. py:attribute:: containerRun
+    :type: ContainerRun
 
-    Docker run step is used for running various commands in a *container*.
+    Container run step is used for running various commands in a *container*.
 
-    For full reference see :attr:`DockerRun`.
+    For full reference see :attr:`ContainerRun`.
 
-  .. py:attribute:: dockerBuild
-    :type: DockerBuild
+  .. py:attribute:: containerBuild
+    :type: ContainerBuild
 
-    Docker build step is used to build a Docker image and publish it to a specified Docker registry.
+    Container build step is used to build a Docker image and publish it to a specified Docker registry.
 
-    For full reference see :attr:`DockerBuild`.
+    For full reference see :attr:`ContainerBuild`.
 
   .. important::
-    A step can be either a ``dockerRun`` or ``dockerBuild`` type - never both. If more than one field will be set, the pipeline will fail during validation.
+    A step can be either a ``containerRun`` or ``containerBuild`` type - never both. If more than one field will be set, the pipeline will fail during validation.
 
 
 
 .. _docker-run-reference:
 
-.. py:attribute:: DockerRun
+.. py:attribute:: ContainerRun
   :type: Object
 
-  Docker run executes the :data:`script` inside a *Docker container* running a Docker :data:`image`. If any of the commands exit with code other than ``0``, the step will fail.
+  Container run executes the :data:`script` inside a *Docker container* running a Docker :data:`image`. If any of the commands exit with code other than ``0``, the step will fail.
 
   .. py:data:: image
     :type: string
@@ -158,9 +158,9 @@ Definitions of all objects and types used in the pipeline definition.
 
 
 
-.. _docker-build-reference:
+.. container-build-reference:
 
-.. py:attribute:: DockerBuild
+.. py:attribute:: ContainerBuild
   :type: Object
 
   Build the *Docker image* and pushes it to registry.
@@ -247,7 +247,7 @@ Definitions of all objects and types used in the pipeline definition.
 .. py:attribute:: FailureHandler
   :type: Object
 
-  Failure handler is an object representing a special kind of pipeline execution unit for handling errors in pipeline **steps**. Its definition is very similar to the **docker run** **step**.
+  Failure handler is an object representing a special kind of pipeline execution unit for handling errors in pipeline **steps**. Its definition is very similar to the **container run** **step**.
 
   .. py:data:: name
     :type: string

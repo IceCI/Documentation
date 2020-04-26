@@ -25,7 +25,7 @@ Secrets are objects in IceCI responsible for storing sensitive data. They are st
 Generic secret
 ++++++++++++++
 
-Generic secrets store sensitive data that can be used in pipelines. Those values can be passed as environment variables to containers. Generic secrets can be used in :attr:`dockerRun<DockerRun>` steps, :attr:`services<Service>` and :attr:`failure handlers<FailureHandler>`. They can be also defined in the :attr:`global<globals>` scope of the pipeline.
+Generic secrets store sensitive data that can be used in pipelines. Those values can be passed as environment variables to containers. Generic secrets can be used in :attr:`containerRun<ContainerRun>` steps, :attr:`services<Service>` and :attr:`failure handlers<FailureHandler>`. They can be also defined in the :attr:`global<globals>` scope of the pipeline.
 
 Example
 _______
@@ -36,7 +36,7 @@ Here's an example of passing a value from ``generic-secret`` as an environment v
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: busybox
       script: |
         printenv ENV_FROM_SECRET
@@ -44,7 +44,7 @@ Here's an example of passing a value from ``generic-secret`` as an environment v
       - name: ENV_FROM_SECRET
         fromSecret: generic-secret
 
-Here's an example of passing a value from ``generic-secret`` to both :attr:`service<Service>` and :attr:`dockerRun<DockerRun>` step in the pipeline via the :attr:`global<globals>` section.
+Here's an example of passing a value from ``generic-secret`` to both :attr:`service<Service>` and :attr:`containerRun<ContainerRun>` step in the pipeline via the :attr:`global<globals>` section.
 
 .. code-block:: yaml
 
@@ -62,7 +62,7 @@ Here's an example of passing a value from ``generic-secret`` to both :attr:`serv
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: busybox
       script: |
         printenv ENV_FROM_SECRET
@@ -82,7 +82,7 @@ Docker secret
 Overview
 ________
 
-A Docker secret stores credentials used to communicate with docker registries. It can be used for both downloading images from private registries as well as pushing images after building them in the :attr:`dockerBuild<DockerBuild>` step. In both cases the ``dockerSecret`` field is used.
+A Docker secret stores credentials used to communicate with docker registries. It can be used for both downloading images from private registries as well as pushing images after building them in the :attr:`containerBuild<ContainerBuild>` step. In both cases the ``dockerSecret`` field is used.
 
 A Docker secret can also be specified in the :attr:`globals<Globals>` section of the pipeline - this way it'll be passed to every object that has a ``dockerSecret`` field. If a Docker secret is specified at the object level, it will override the global docker secret.
 
@@ -100,7 +100,7 @@ Here's an example of using a Docker image from a private registry to run both th
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: mrupgrade/private:debian10
       dockerSecret: dockerhub
       script: "echo Hello world"
@@ -122,7 +122,7 @@ Here's an example of setting up ``dockerSecret`` at the global level so it doesn
 
   steps:
   - name: step1
-    dockerRun:
+    containerRun:
       image: mrupgrade/private:debian10
       script: "echo Hello world"
 
@@ -133,7 +133,7 @@ Here's an example of setting up ``dockerSecret`` at the global level so it doesn
 Further reading
 _______________
 
-For more information on how to use Docker secrets check the reference for these pipeline objects: :attr:`dockerRun<DockerRun>`, :attr:`dockerBuild<DockerBuild>`, :attr:`service<Service>`,  :attr:`failureHandler<FailureHandler>` and :attr:`globals`.
+For more information on how to use Docker secrets check the reference for these pipeline objects: :attr:`containerRun<ContainerRun>`, :attr:`containerBuild<ContainerBuild>`, :attr:`service<Service>`,  :attr:`failureHandler<FailureHandler>` and :attr:`globals`.
 
 
 
