@@ -16,14 +16,16 @@ IceCI uses a range of custom Kubernetes resources. They are required by the oper
 
 .. code-block:: bash
 
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_backingservices_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_containerbuilds_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_containerruns_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_gitclones_crd.yaml
   kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_gitpipelines_crd.yaml
   kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_gitwatchers_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_backingservices_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_dockerbuilds_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_gitclones_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_pipelines_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_tasks_crd.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/icekube.io_workspaces_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_pipelines_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_repositories_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_runtimeprofiles_crd.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds/iceci.io_workspaces_crd.yaml
 
 .. note::
   You can find out more about Kubernetes custom resources in the `documentation <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/>`_
