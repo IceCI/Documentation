@@ -104,7 +104,22 @@ Here's an example of mounting files from a secret in a container.
 
   The content of a file can't be defined inline. Every file has to have a reference to a secret, from which the content is pulled.
 
+Conditional execution
+---------------------
 
+You can control which Git events trigger the execution of your step, here's an example.
+
+.. code-block:: yaml
+
+  steps:
+  - name: step1
+    when:
+      event: ["commit"]
+      branch: ["master"]
+      skipBranch: ["development", "feature-*"]
+    containerRun:
+      image: busybox
+      script: "echo 'Hello world!'"
 
 Further reading
 +++++++++++++++

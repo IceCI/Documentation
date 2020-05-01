@@ -104,6 +104,13 @@ Definitions of all objects and types used in the pipeline definition.
 
     List of :attr:`FailureHandlerReference` objects. All of failure handlers will be executed in the order declared in this list. If global failure handlers are also defined, they will be run after those specified here.
 
+  .. py:attribute:: when
+    :type: When
+
+    Defines a set of conditions to determine if a step should run for a given Git event. This attribute is optional - if not present, the step will run for every commit pushed to the repository.
+
+    For full reference see :attr:`When`
+
   .. py:attribute:: containerRun
     :type: ContainerRun
 
@@ -331,3 +338,46 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:attribute:: fromSecret
 
     Name of a secret from which the value should be retrieved to mount into the container as a file.
+
+
+.. py:attribute:: When
+  :type: Object
+
+  This object defines the conditions determining if the pipeline step should be run for a specific Git event or not.
+
+  .. py:attribute:: event
+    :type: list
+
+    A list of event types that the step should run for. Supported values are ``commit`` and ``tag``. Optional - if not provided, ``commit`` is assumed.
+
+  .. py:attribute:: branch
+    :type: list
+
+    A list of branch names that the step should run for. Optional - if not provided, the step will run for all branches.
+
+  .. py:attribute:: skipBranch
+    :type: list
+
+    A list of branch names that the step should *not* run for. Optional - if not provided, the step will run for all branches defined by the :py:attr:`branch` attribute.
+
+      .. important::
+
+        The :py:attr:`branch` and :py:attr:`skipBranch` attributes will have effect only if the :py:attr:`event` attribute contains ``commit`` or is empty.
+
+  .. py:attribute:: tag
+    :type: list
+
+    A list of tag names that the steps should run for. Optional - if not provided, the step will run for all tags.
+
+  .. py:attribute:: skipTag
+    :type: list
+
+    A list of tag names that the step should *not* run for. Optional - if not provided, the step will run for all tags defined by the :py:attr:`tag` attribute.
+
+      .. important::
+
+        The :py:attr:`tag` and :py:attr:`skipTag` attributes will have effect only if the :py:attr:`event` attribute contains ``tag``.
+
+  .. note::
+    The :py:attr:`branch`, :py:attr:`skipBranch`, :py:attr:`tag` and :py:attr:`skipTag` fields support basic string globbing in their list values. This means that you can use ``*`` as a wildcard to match multiple values. For example - if you enter ``feature-*`` in the branch list, the step will run for all branches with names starting with ``feature-``
+
