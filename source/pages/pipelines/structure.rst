@@ -107,7 +107,7 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:attribute:: when
     :type: When
 
-    Defines a set of conditions to determine if a step should run for a given Git event. This attribute is optional - if not present, the step will run for every commit pushed to the repository.
+    Defines a set of conditions to determine if a step should run for a given Git event. This attribute is optional - if not present, the step will run for every commit and every branch pushed to the repository.
 
     For full reference see :attr:`When`
 
@@ -358,7 +358,7 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:attribute:: skipBranch
     :type: list
 
-    A list of branch names that the step should *not* run for. Optional - if not provided, the step will run for all branches defined by the :py:attr:`branch` attribute.
+    A list of branch names that the step should *not* run for. Optional - if not provided, the step will run for all branches defined by the :py:attr:`branch` attribute. In case the :py:attr:`branch` attribute is also not provided, the step will run for all branches.
 
       .. important::
 
@@ -372,7 +372,7 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:attribute:: skipTag
     :type: list
 
-    A list of tag names that the step should *not* run for. Optional - if not provided, the step will run for all tags defined by the :py:attr:`tag` attribute.
+    A list of tag names that the step should *not* run for. Optional - if not provided, the step will run for all tags defined by the :py:attr:`tag` attribute. In case the :py:attr:`tag` attribute is also not provided, the step will run for all tags.
 
       .. important::
 
