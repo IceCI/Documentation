@@ -111,6 +111,11 @@ Definitions of all objects and types used in the pipeline definition.
 
     For full reference see :attr:`When`
 
+  .. py:data:: runtimeProfile
+    :type: string
+
+    The name of a runtime profile that should be applied to the step. For more reference see :ref:`runtime profiles section<runtime-profiles-desc>`
+
   .. py:attribute:: containerRun
     :type: ContainerRun
 

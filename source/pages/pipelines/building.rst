@@ -25,4 +25,5 @@ Additional options
 
   building_secrets.rst
   building_template.rst
+  building_runtimeprofiles.rst
 
