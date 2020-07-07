@@ -41,7 +41,7 @@ Below is an example of running a failure handler after a failed :attr:`step<Step
   failureHandlers:
   - name: failure-handler-1
     image: busybox
-    script: 'echo "step $ICE_FAILED_STEP_NAME has failed"'
+    script: 'echo "step $ICECI_FAILED_STEP_NAME has failed"'
 
 
 Global failure handlers
@@ -68,15 +68,15 @@ Below is an example of running a :attr:`failure handlers<FailureHandler>` from b
   failureHandlers:
   - name: failure-handler-1
     image: busybox
-    script: 'echo "failure handler $ICE_STEP_NAME"'
+    script: 'echo "failure handler $ICECI_STEP_NAME"'
 
   - name: failure-handler-2
     image: busybox
-    script: 'echo "failure handler $ICE_STEP_NAME"'
+    script: 'echo "failure handler $ICECI_STEP_NAME"'
 
   - name: failure-handler-3
     image: busybox
-    script: 'echo "failure handler $ICE_STEP_NAME"'
+    script: 'echo "failure handler $ICECI_STEP_NAME"'
 
 .. note::
   Notice that ``failure-handler-1`` will run twice because it's declared in both the global section and in the step. Currently IceCI does not implement any deduplication mechanism for failure handlers.
@@ -101,10 +101,10 @@ Here's an example of defining environment variables and files on :attr:`failure 
   - name: failure-handler-1
     image: busybox
     script: |
-      echo $ICE_FH
+      echo $ICECI_FH
       cat /mnt/file
     environment:
-    - name: ICE_FH
+    - name: ICECI_FH
       value: failure-handler-env
     files:
     - path: /mnt/file
