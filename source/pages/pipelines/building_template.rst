@@ -14,9 +14,13 @@ Currently the fields supporting interpolations are:
 
     - ``tags``
 
+  - :attr:`ServiceRun<ServiceRun>`:
+
+    - ``image``
+
 In fields supported by interpolation syntax, the part inside ``{{`` and ``}}`` is interpreted and treated as a name of the field. During the pipeline run it'll be replaced with the value of the specified field. The rest of the string will not change. Thanks to that you can embed pipeline context into part of the string.
 
-Here's an example of using interpolation to create a Docker tag containing the name of the build. Notice that you can use the interpolation variable along with a plain string. For example, if the build number was ``42``, the first pushed tag would be ``build-42`` - the other one will be ``latest``.
+Here are examples of using interpolation to create a Docker tag containing the name of the build and a service created from a Docker image with that build. Notice that you can use the interpolation variable along with a plain string. For example, in the container build step, if the build number was ``42``, the first pushed tag would be ``build-42`` - the other one will be ``latest``.
 
 
 .. code-block:: yaml
@@ -30,6 +34,11 @@ Here's an example of using interpolation to create a Docker tag containing the n
       tags:
       - "build-{{ ICE_BUILD_NUMBER }}"
       - latest
+  - name: pipeline-service
+    serviceRun:
+      name: example-service
+      image: "myapp:build-{{ ICE_BUILD_NUMBER }}"
+      dockerSecret: dockerhub
 
 
 

@@ -130,8 +130,15 @@ Definitions of all objects and types used in the pipeline definition.
 
     For full reference see :attr:`ContainerBuild`.
 
+  .. py:attribute:: serviceRun
+    :type: ServiceRun
+
+    Service run step is used for launching a :attr:`Service` type container at a specific moment of the pipeline run. It can be used, for example, to create a service out of an application created in one of the previous pipeline steps.
+
+    For full reference see :attr:`ServiceRun`.
+
   .. important::
-    A step can be either a ``containerRun`` or ``containerBuild`` type - never both. If more than one field will be set, the pipeline will fail during validation.
+    The ``containerRun``, ``containerBuild`` and ``serviceRun`` fields are mutually exclusive - the step must be of a single type. If more than one field will be set, the pipeline will fail during validation.
 
 
 
@@ -219,6 +226,44 @@ Definitions of all objects and types used in the pipeline definition.
     Name of the Docker secret used for communicating with Docker registry. Used for pulling image from private registries.
 
 
+.. py:attribute:: ServiceRun
+  :type: Object
+
+  Creates a :attr:`Service` and exits - the service itself, however, will run until the pipeline finishes.
+
+  .. note::
+    The status of this step reflects the status of creating the service object, but not the status of the service itself.
+
+  .. py:data:: name
+    :type: string
+
+    The name of the service.
+
+  .. py:data:: image
+    :type: string
+
+    Docker image used to run the service.
+
+  .. py:data:: dockerSecret
+    :type: string
+    :value: ""
+
+    Name of the Docker secret used for communicating with Docker registry. Used for pulling image from private registries.
+
+  .. py:data:: script
+    :type: string
+
+    A string containing the script that will be executed inside the service container. The shell is run with ``set -e`` so this script will fail if any of the commands exits with a code other than ``0``.  If empty, the default ``command`` from the *Docker image* will be executed.
+
+  .. py:data:: environment
+    :type: list(EnvironmentVariable)
+
+    List of environment variables passed to the container.
+
+  .. py:data:: files
+    :type: list(File)
+
+    List of files that will be mounted in the container.
 
 .. _service-reference:
 
