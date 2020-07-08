@@ -13,6 +13,7 @@ Currently the fields supporting interpolations are:
   - :attr:`ContainerBuild<ContainerBuild>`:
 
     - ``tags``
+    - ``buildArgs``
 
   - :attr:`ServiceRun<ServiceRun>`:
 
@@ -34,10 +35,13 @@ Here are examples of using interpolation to create a Docker tag containing the n
       tags:
       - "build-{{ ICECI_BUILD_NUMBER }}"
       - latest
+      buildArgs:
+      - name: BRANCH
+        value: "{{ ICECI_GIT_BRANCH_NAME }}"
   - name: pipeline-service
     serviceRun:
       name: example-service
-      image: "myapp:build-{{ ICE_BUILD_NUMBER }}"
+      image: "myapp:build-{{ ICECI_BUILD_NUMBER }}"
       dockerSecret: dockerhub
 
 

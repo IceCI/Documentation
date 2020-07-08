@@ -225,6 +225,11 @@ Definitions of all objects and types used in the pipeline definition.
 
     Name of the Docker secret used for communicating with Docker registry. Used for pulling image from private registries.
 
+  .. py:data:: buildArgs
+    :type: list(BuildArg)
+
+    A list of build-time arguments.
+
 
 .. py:attribute:: ServiceRun
   :type: Object
@@ -388,6 +393,20 @@ Definitions of all objects and types used in the pipeline definition.
   .. py:attribute:: fromSecret
 
     Name of a secret from which the value should be retrieved to mount into the container as a file.
+
+
+.. py:attribute:: BuildArg
+  :type: Object
+
+  The BuildArg object represents a build-time parameter that will be set during the build. Equivalent to ``--build-arg`` parameter in the ``docker build`` command.
+
+  .. py:attribute:: name
+
+    The name of the build argument
+
+  ..  py:attribute:: value
+
+    The value of the build argument
 
 
 .. py:attribute:: When
