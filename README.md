@@ -34,4 +34,4 @@ make html
 
 ---
 
-_Kept cool &#x1f9ca; by [Icetek](https://icetek.io/)_
+Kept cool &#x1f9ca; by [Icetek](https://icetek.io/)

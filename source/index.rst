@@ -15,12 +15,6 @@ Welcome to IceCI`s documentation!
   pages/quickstart.rst
 
 .. toctree::
-  :caption: Running IceCI
-
-  pages/installation.rst
-  pages/configuration.rst
-
-.. toctree::
   :caption: Pipelines
 
   pages/pipelines/overview.rst
