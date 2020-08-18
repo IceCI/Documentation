@@ -137,8 +137,15 @@ Definitions of all objects and types used in the pipeline definition.
 
     For full reference see :attr:`ServiceRun`.
 
+  .. py:attribute:: waitForAccept
+    :type: WaitForAccept
+
+    Wait for accept step is used for creating conditional builds. This type of step will pause the pipeline execution and wait for user action before continuing. It can be used, for example, to create pipelines that apply new infrastructure changes only after the user accepts them.
+
+    For full reference see :attr:`WaitForAccept`.
+
   .. important::
-    The ``containerRun``, ``containerBuild`` and ``serviceRun`` fields are mutually exclusive - the step must be of a single type. If more than one field will be set, the pipeline will fail during validation.
+    The ``containerRun``, ``containerBuild``, ``serviceRun`` and ``waitForAccept`` fields are mutually exclusive - the step must be of a single type. If more than one field will be set, the pipeline will fail during validation.
 
 
 
@@ -269,6 +276,17 @@ Definitions of all objects and types used in the pipeline definition.
     :type: list(File)
 
     List of files that will be mounted in the container.
+
+
+.. py:attribute:: WaitForAccept
+  :type: Object
+
+  Pauses the pipeline and waits for user acceptance before continuing. Can be set to an empty object ``{}`` (which will cause the pipeline to wait indefinitely for user interaction), or a :data:`timeout` parameter can be set, to ensure that the pipeline will fail after a certain period of inactivity.
+
+  .. py:data:: timeout
+    :type: integer
+
+    Number of seconds that the step will wait for user acceptance. When this timeout is exceeded, the step will fail. If not set or set to 0, the step will wait for user acceptance indefinitely.
 
 .. _service-reference:
 
