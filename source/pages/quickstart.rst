@@ -44,13 +44,13 @@ You can use a handy all-in-one manifest to install IceCI. Applying it in your cl
 .. code-block:: bash
 
   kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/crds.yaml
-  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/one-node.yaml
+  kubectl apply -f https://raw.githubusercontent.com/IceCI/IceCI/master/manifests/minikube.yaml
 
 Once all the applications are running, you're all ready to go.
 
 
 .. note::
-    Apart from the one-node file, kustomize files for all components, and examples of setup can be found as separate files in the IceCI `GitHub repository <https://github.com/IceCI/IceCI>`_
+    Apart from the minikube file, kustomize files for all components, and examples of setup can be found as separate files in the IceCI `GitHub repository <https://github.com/IceCI/IceCI>`_
 
 
 

@@ -113,8 +113,8 @@ Available variables
 
   Example value: ``VXBkYXRlICdSRUFETUUubWQnCg==``
 
-.. envvar:: ICECI_GIT_TAG_OR_BRANCH
+.. envvar:: ICECI_GIT_EVENT_NAME
 
-  The name of the current git branch or tag - the value depends on which type of event triggered the build.
+  The name of the current git branch, tag or pr - the value depends on which type of event triggered the build.
 
   Example value: ``master``
